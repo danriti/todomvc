@@ -20,12 +20,19 @@
             <span><%=foo.bar%></span>
         </div>
 
+        <div tbone="tmpl blah"></div>
+
 		<footer id="info">
 			<p>Double-click to edit a todo</p>
 			<!-- Change this out with your name and url ↓ -->
 			<p>Created by <a href="http://todomvc.com">Dan Riti</a></p>
 			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
 		</footer>
+
+        <!-- Templates -->
+        <script data-name="blah" type="text/template">
+            <span><%=foo.lol%></span>
+        </script>
 
 		<!-- Scripts here. Don't remove this ↓ -->
 		<script src="bower_components/todomvc-common/base.js"></script>
