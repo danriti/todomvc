@@ -4,6 +4,7 @@
 	// Your starting point. Enjoy the ride!
     var app = {};
     var ENTER_KEY = 13;
+    var ID = 0;
 
     // Models
     app.Foo = tbone.models.base.extend({
@@ -14,12 +15,15 @@
     });
 
     app.Todo = tbone.models.base.extend({
-        state: function() {
-            return {
-                title: this.title,
-                checked: false
-            }
+        init: function(title) {
+            this.query('id', ID++);
+            this.query('title', title);
+            this.query('checked', false);
         }
+    });
+
+    app.Todos = tbone.collections.base.extend({
+        model: app.Todo
     });
 
     // Views
@@ -33,14 +37,19 @@
             if (e.which == ENTER_KEY) {
                 var val = input.val();
                 console.log('adding todo: ', val);
-                tbone.push('todos', app.Todo.make({title: val}));
+
+                var todo = app.Todo.make();
+                todo.init(val);
+
+                todos.push(todo);
                 input.val('');
             }
         });
     });
 
     // Instances
-    tbone('todos', []);
+    var todos = app.Todos.make();
+    tbone('todos', todos);
 
     // Let's rock!
     tbone.render(jQuery('[tbone]'));
