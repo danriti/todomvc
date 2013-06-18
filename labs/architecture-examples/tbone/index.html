@@ -14,13 +14,8 @@
 				<h1>todos</h1>
 				<input id="new-todo" placeholder="What needs to be done?" autofocus>
 			</header>
+            <section id="main" tbone="tmpl todo_list"></section>
 		</section>
-
-        <div tbone="inline test">
-            <span><%=foo.bar%></span>
-        </div>
-
-        <div tbone="tmpl blah"></div>
 
 		<footer id="info">
 			<p>Double-click to edit a todo</p>
@@ -32,6 +27,27 @@
         <!-- Templates -->
         <script name="blah" type="text/tbone-tmpl">
             <span><%=foo.lol%></span>
+        </script>
+
+        <script name="todo_list" type="text/tbone-tmpl">
+            <% if (todos.length > 0) { %>
+            <input id="toggle-all" type="checkbox">
+            <label for="toggle-all">Mark all as complete</label>
+            <ul id="todo-list">
+                <!-- These are here just to show the structure of the list items -->
+                <!-- List items should get the class `editing` when editing and `completed` when marked as completed -->
+                <% _.each(todos, function(todo, i) { %>
+                <li>
+                    <div class="view">
+                        <input class="toggle" type="checkbox">
+                        <label><%=todo.title%></label>
+                        <button class="destroy"></button>
+                    </div>
+                    <input class="edit" value="<%=todo%>">
+                </li>
+                <% }); %>
+            </ul>
+            <% } %>
         </script>
 
 		<!-- Scripts here. Don't remove this ↓ -->
