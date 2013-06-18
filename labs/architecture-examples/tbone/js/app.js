@@ -15,15 +15,6 @@
     // Instances
     tbone('foo', todo.Foo.make());
 
-    // Magic to make template scripts work! Need to work with Tillberg to get
-    // this somewhat formalized. What are we going to do with this?
-    $('script[type="text/template"]').each(function() {
-        var $this = $(this);
-        var html = $this.html();
-        var name = $this.data('name');
-        tbone.addTemplate(name, html);
-    });
-
     // Let's rock!
     tbone.render(jQuery('[tbone]'));
 
