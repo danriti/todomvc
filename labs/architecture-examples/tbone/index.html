@@ -10,7 +10,7 @@
 	</head>
 	<body>
 		<section id="todoapp">
-			<header id="header">
+			<header tbone="view todoInput" id="header">
 				<h1>todos</h1>
 				<input id="new-todo" placeholder="What needs to be done?" autofocus>
 			</header>
@@ -25,10 +25,6 @@
 		</footer>
 
         <!-- Templates -->
-        <script name="blah" type="text/tbone-tmpl">
-            <span><%=foo.lol%></span>
-        </script>
-
         <script name="todo_list" type="text/tbone-tmpl">
             <% if (todos.length > 0) { %>
             <input id="toggle-all" type="checkbox">
