@@ -4,7 +4,7 @@
 	// Your starting point. Enjoy the ride!
     var app = {};
     var ENTER_KEY = 13;
-    var ID = 0;
+    var ID = 1;
 
     // Models
     app.Foo = tbone.models.base.extend({
