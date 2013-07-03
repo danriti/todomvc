@@ -23,7 +23,8 @@
     });
 
     app.Todos = tbone.collections.base.extend({
-        model: app.Todo
+        model: app.Todo,
+        lookupById: true
     });
 
     // Views
@@ -51,11 +52,19 @@
         console.log('init item');
 
         var self = this;
+        var id = $(self.el).data('id');
         var checkbox = self.$('input.toggle');
+        var destroy = self.$('button.destroy');
 
         // Add basic support for completing a todo item.
         checkbox.click(function() {
             $(self.el).toggleClass("completed");
+        });
+
+        // Destroy le todo item.
+        destroy.click(function() {
+            console.log('destroy: ', id);
+            todos.remove(id);
         });
     });
 
