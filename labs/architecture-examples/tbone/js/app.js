@@ -42,7 +42,7 @@
                 var todo = app.Todo.make();
                 todo.init(val);
 
-                todos.push(todo);
+                todos.add(todo);
                 input.val('');
             }
         });
