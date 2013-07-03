@@ -47,6 +47,18 @@
         });
     });
 
+    tbone.createView('todoItem', function() {
+        console.log('init item');
+
+        var self = this;
+        var checkbox = self.$('input.toggle');
+
+        // Add basic support for completing a todo item.
+        checkbox.click(function() {
+            $(self.el).toggleClass("completed");
+        });
+    });
+
     // Instances
     var todos = app.Todos.make();
     tbone('todos', todos);
