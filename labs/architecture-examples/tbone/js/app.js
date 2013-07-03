@@ -61,6 +61,7 @@
         // Add basic support for completing a todo item.
         checkbox.click(function() {
             $(self.el).toggleClass("completed");
+            todos.toggle('#' + id + '.checked');
         });
 
         // Destroy le todo item.
