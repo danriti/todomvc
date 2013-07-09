@@ -27,6 +27,10 @@
         lookupById: true
     });
 
+    tbone('todoItemsLeft', function() {
+        return _.filter(tbone('todos') || [], function(todo) { return !todo.checked }).length;
+    });
+
     // Views
     tbone.createView('todoInput', function() {
         console.log('init view');
