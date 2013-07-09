@@ -1,7 +1,7 @@
 (function( window ) {
-	'use strict';
+    'use strict';
 
-	// Your starting point. Enjoy the ride!
+    // Your starting point. Enjoy the ride!
     var app = {};
     var ENTER_KEY = 13;
     var ID = 1;
