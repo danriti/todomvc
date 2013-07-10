@@ -27,8 +27,13 @@
         lookupById: true
     });
 
-    tbone('todoItemsLeft', function() {
-        return _.filter(tbone('todos') || [], function(todo) { return !todo.checked }).length;
+    tbone('todoList', function() {
+        var todos = tbone('todos') || [];
+        return {
+            items: todos,
+            activeCount: _.filter(todos, function(todo) { return !todo.checked }).length,
+            completedCount: _.filter(todos, function(todo) { return todo.checked }).length
+        }
     });
 
     // Views
