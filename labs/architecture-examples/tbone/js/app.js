@@ -23,7 +23,7 @@
 
     app.Todos = tbone.collections.localStorage.extend({
         model: app.Todo,
-        lookupById: true
+        key: 'todos'
     });
 
     tbone('todoList', function() {
