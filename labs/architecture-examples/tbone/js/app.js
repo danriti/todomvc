@@ -28,11 +28,13 @@
 
     tbone('todoList', function() {
         var todos = tbone('todos') || [];
+        var list = _.values(todos);
+        var ids = _.map(todos, function (todo) { return todo.id; });
         return {
             items: _.map(todos, function(todo) { return _.clone(todo); }),
             activeCount: _.filter(todos, function(todo) { return !todo.checked }).length,
             completedCount: _.filter(todos, function(todo) { return todo.checked }).length,
-            nextId: (_.max(todos, function (todo) { return todo.id; }) || 0) + 1
+            nextId: (ids.length ? _.max(ids) : 0) + 1
         }
     });
 
