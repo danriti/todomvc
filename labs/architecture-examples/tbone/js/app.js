@@ -4,7 +4,6 @@
     // Your starting point. Enjoy the ride!
     var app = {};
     var ENTER_KEY = 13;
-    var ID = 1;
 
     // Models
     app.Foo = tbone.models.base.extend({
@@ -16,7 +15,7 @@
 
     app.Todo = tbone.models.base.extend({
         init: function(title) {
-            this.query('id', ID++);
+            this.query('id', T('todoList.nextId'));
             this.query('title', title);
             this.query('checked', false);
         }
@@ -32,7 +31,8 @@
         return {
             items: _.map(todos, function(todo) { return _.clone(todo); }),
             activeCount: _.filter(todos, function(todo) { return !todo.checked }).length,
-            completedCount: _.filter(todos, function(todo) { return todo.checked }).length
+            completedCount: _.filter(todos, function(todo) { return todo.checked }).length,
+            nextId: (_.max(todos, function (todo) { return todo.id; }) || 0) + 1
         }
     });
 
