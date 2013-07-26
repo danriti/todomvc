@@ -30,7 +30,7 @@
     tbone('todoList', function() {
         var todos = tbone('todos') || [];
         return {
-            items: _.values(todos),
+            items: _.map(todos, function(todo) { return _.clone(todo); }),
             activeCount: _.filter(todos, function(todo) { return !todo.checked }).length,
             completedCount: _.filter(todos, function(todo) { return todo.checked }).length
         }
