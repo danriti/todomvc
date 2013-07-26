@@ -22,7 +22,7 @@
         }
     });
 
-    app.Todos = tbone.collections.base.extend({
+    app.Todos = tbone.collections.localStorage.extend({
         model: app.Todo,
         lookupById: true
     });
