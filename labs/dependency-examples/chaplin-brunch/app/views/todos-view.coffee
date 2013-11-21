@@ -1,29 +1,28 @@
-CollectionView = require 'views/base/collection-view'
-template = require 'views/templates/todos'
-TodoView = require 'views/todo-view'
+CollectionView = require './base/collection-view'
+TodoView = require './todo-view'
+utils = require 'lib/utils'
 
 module.exports = class TodosView extends CollectionView
-  el: '#main'
+  container: '#main'
+  events:
+    'click #toggle-all': 'toggleCompleted'
   itemView: TodoView
   listSelector: '#todo-list'
-  template: template
+  listen:
+    'all collection': 'renderCheckbox'
+    'todos:clear mediator': 'clear'
+  template: require './templates/todos'
 
-  initialize: ->
-    super
-    @subscribeEvent 'todos:clear', @clear
-    @modelBind 'all', @renderCheckbox
-    @delegate 'click', '#toggle-all', @toggleCompleted
-
-  render: =>
+  render: ->
     super
     @renderCheckbox()
 
-  renderCheckbox: =>
-    @$('#toggle-all').prop 'checked', @collection.allAreCompleted()
-    @$el.toggle(@collection.length isnt 0)
+  renderCheckbox: ->
+    @find('#toggle-all').setAttribute 'checked', @collection.allAreCompleted()
+    utils.toggle @el, @collection.length isnt 0
 
-  toggleCompleted: (event) =>
-    isChecked = event.currentTarget.checked
+  toggleCompleted: (event) ->
+    isChecked = event.delegateTarget.checked
     @collection.each (todo) -> todo.save completed: isChecked
 
   clear: ->

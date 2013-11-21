@@ -1,18 +1,15 @@
-View = require 'views/base/view'
-template = require 'views/templates/header'
+View = require './base/view'
 
 module.exports = class HeaderView extends View
-  autoRender: yes
+  autoRender: true
   el: '#header'
-  template: template
+  events:
+    'keypress #new-todo': 'createOnEnter'
+  template: require './templates/header'
 
-  initialize: ->
-    super
-    @delegate 'keypress', '#new-todo', @createOnEnter
-
-   createOnEnter: (event) =>
-     ENTER_KEY = 13
-     title = $(event.currentTarget).val().trim()
-     return if event.keyCode isnt ENTER_KEY or not title
-     @collection.create {title}
-     @$('#new-todo').val ''
+  createOnEnter: (event) ->
+    ENTER_KEY = 13
+    title = event.delegateTarget.value.trim()
+    return if event.keyCode isnt ENTER_KEY or not title
+    @collection.create {title}
+    @find('#new-todo').value = ''

@@ -1,40 +1,33 @@
-View = require 'views/base/view'
-template = require 'views/templates/todo'
+View = require './base/view'
 
 module.exports = class TodoView extends View
-  template: template
+  events:
+    'click .toggle': 'toggle'
+    'dblclick label': 'edit'
+    'keyup .edit': 'save'
+    'focusout .edit': 'save'
+    'click .destroy': 'clear'
+
+  listen:
+    'change model': 'render'
+
+  template: require './templates/todo'
   tagName: 'li'
 
-  initialize: ->
-    super
-    @modelBind 'change', @render
-    @delegate 'click', '.destroy', @destroy
-    @delegate 'dblclick', 'label', @edit
-    @delegate 'keypress', '.edit', @save
-    @delegate 'click', '.toggle', @toggle
-    @delegate 'blur', '.edit', @save
-
-  render: =>
-    super
-    # Reset classes, re-add the appropriate ones.
-    @$el.removeClass 'active completed'
-    className = if @model.get('completed') then 'completed' else 'active'
-    @$el.addClass className
-
-  destroy: =>
+  clear: ->
     @model.destroy()
 
-  toggle: =>
+  toggle: ->
     @model.toggle().save()
 
-  edit: =>
-    @$el.addClass 'editing'
-    @$('.edit').focus()
+  edit: ->
+    @el.classList.add 'editing'
+    @find('.edit').focus()
 
-  save: (event) =>
+  save: (event) ->
     ENTER_KEY = 13
-    title = $(event.currentTarget).val().trim()
+    title = event.delegateTarget.value.trim()
     return @model.destroy() unless title
-    return if event.type is 'keypress' and event.keyCode isnt ENTER_KEY
+    return if event.type is 'keyup' and event.keyCode isnt ENTER_KEY
     @model.save {title}
-    @$el.removeClass 'editing'
+    @el.classList.remove 'editing'

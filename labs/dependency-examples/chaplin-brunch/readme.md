@@ -2,6 +2,9 @@
 
 > Chaplin is an architecture for JavaScript applications using the Backbone.js library. Chaplin addresses Backbone’s limitations by providing a lightweight and flexible structure that features well-proven design patterns and best practices.
 
+In this case, Backbone is replaced with [Exoskeleton](http://exosjs.com),
+faster and leaner Backbone without dependencies on jQuery and underscore.
+
 > _[Chaplin - chaplinjs.org](http://chaplinjs.org)_
 
 
@@ -40,7 +43,7 @@ If you haven't already installed [Brunch](http://brunch.io), run:
 Once you have Brunch, install this application's dependencies:
 
 	# from labs/dependency-examples/chaplin-brunch
-	npm install
+	npm install & bower install
 
 To build the app, run:
 

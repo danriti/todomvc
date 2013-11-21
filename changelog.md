@@ -1,12 +1,23 @@
 # Changelog
 
-## 1.2 - TBA
+## 1.3 - TBD
+
+- New since 1.2:
+    - Durandal
+    - Exoskeleton
+    - Atma.js
+
+## 1.2 - 2013-08-06
 
 - New since 1.1:
+    - Polymer
     - Flight
     - DeftJS + ExtJS
     - Aria Templates
     - Enyo + Backbone.js
+    - React
+    - SAPUI5
+    - AngularJS + Firebase
 
 - Updates since 1.1:
     - Backbone 1.0

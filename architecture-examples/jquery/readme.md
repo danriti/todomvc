@@ -14,12 +14,13 @@ Here are some links you may find helpful:
 * [How jQuery Works](http://learn.jquery.com/about-jquery/how-jquery-works)
 * [API Reference](http://api.jquery.com)
 * [Plugins](http://plugins.jquery.com)
-* [Brower Support](http://jquery.com/browser-support)
+* [Browser Support](http://jquery.com/browser-support)
 * [Blog](http://blog.jquery.com)
 
 Articles and guides from the community:
 
 * [Try jQuery](http://try.jquery.com)
+* [jQuery Annotated Source](http://github.com/robflaherty/jquery-annotated-source)
 * [10 Things I Learned From the jQuery Source](http://paulirish.com/2010/10-things-i-learned-from-the-jquery-source)
 
 Get help from other jQuery users:
